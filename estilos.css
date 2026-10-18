@@ -1,0 +1,107 @@
+/* ===== Paleta de colores de la marca ===== */
+:root {
+  --verde: #2E7D32;
+  --verde-oscuro: #1B3A1F;
+  --verde-claro: #A5D6A7;
+  --fondo-claro: #F1F8E9;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--verde-oscuro);
+  padding-top: 70px; /* espacio para el menú fijo */
+}
+
+h1, h2, h3 { font-weight: 700; }
+h3 { font-size: 1.2rem; }
+
+.logo { width: 36px; height: 36px; }
+.navbar-brand { color: var(--verde); }
+
+/* Botón principal de la marca */
+.btn-verde {
+  background: var(--verde);
+  color: white;
+  border-radius: 30px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+.btn-verde:hover { background: var(--verde-oscuro); color: white; }
+
+/* Hero */
+.hero {
+  background: var(--fondo-claro);
+  padding: 80px 0;
+}
+.hero h1 { font-size: 2.6rem; }
+.hero h1 span { color: var(--verde); }
+
+.tarjeta-app {
+  max-width: 340px;
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.numero { font-size: 2.5rem; font-weight: 700; color: var(--verde); }
+.dato { font-size: 1.3rem; font-weight: 600; margin: 0; }
+.mensaje {
+  margin-top: 20px;
+  background: var(--fondo-claro);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+/* Beneficios y testimonios */
+.beneficio, .testimonio {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  height: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+.beneficio { text-align: center; }
+.icono { font-size: 2.5rem; }
+.fondo-claro { background: var(--fondo-claro); }
+
+/* Secciones de llamado a la acción */
+.cta {
+  background: var(--verde);
+  color: white;
+}
+
+/* Pasos de "cómo funciona" */
+.paso { text-align: center; }
+.paso span {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  border-radius: 50%;
+  background: var(--verde-claro);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Calculadora */
+.calculadora {
+  max-width: 700px;
+  background: var(--fondo-claro);
+  border-radius: 16px;
+  padding: 28px;
+}
+.resultado { font-size: 1.2rem; font-weight: 600; color: var(--verde); }
+
+/* Formulario */
+.formulario {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  color: var(--verde-oscuro);
+}
+
+/* Pre-footer y footer */
+.prefooter { background: var(--verde-claro); }
+.cifra { font-size: 2rem; font-weight: 700; margin: 0; }
+footer { background: var(--verde-oscuro); color: white; }
