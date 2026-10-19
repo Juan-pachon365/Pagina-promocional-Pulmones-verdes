@@ -6,29 +6,22 @@
   <title>Pulmones Verdes | Deja el cigarrillo, un día a la vez</title>
   <meta name="description" content="App que te ayuda a dejar de fumar: cuenta los cigarrillos evitados, el dinero ahorrado y te da mensajes de ánimo.">
 
-  
-  <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K7S3DDBP');</script>
-<!-- End Google Tag Manager -->
 
-  <!-- Bootstrap (grid y componentes vistos en el primer corte) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
- <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7S3DDBP"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
- 
-  <!-- ===== SECCIÓN 1: HEADER ===== -->
+
   <header>
-    <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
           <svg class="logo" viewBox="0 0 40 40" aria-hidden="true">
@@ -38,7 +31,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </svg>
           <span>Pulmones <strong>Verdes</strong></span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="menu">
@@ -53,53 +46,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </nav>
   </header>
 
-  <!-- ===== SECCIÓN 2: HERO ===== -->
   <section id="inicio" class="hero">
     <div class="container">
-      <div class="row align-items-center g-5">
+      <div class="row align-items-center g-4 g-lg-5">
         <div class="col-lg-6">
+          <span class="etiqueta">🌱 App gratuita para dejar de fumar</span>
           <h1>Respira mejor.<br><span>Deja el cigarrillo</span> un día a la vez.</h1>
           <p class="lead">Pulmones Verdes cuenta los cigarrillos que evitas, el dinero que ahorras y te envía mensajes de ánimo cuando más los necesitas.</p>
-          <a href="#registro" class="btn btn-verde btn-lg" id="cta-hero">Quiero dejar de fumar</a>
+          <div class="d-flex flex-wrap gap-3 align-items-center">
+            <a href="#registro" class="btn btn-verde btn-lg" id="cta-hero">Quiero dejar de fumar</a>
+            <a href="#como-funciona" class="enlace-secundario">Ver cómo funciona →</a>
+          </div>
+          <div class="confianza">
+            <div class="caras">
+              <img src="img/avatar-laura.svg" alt="">
+              <img src="img/avatar-andres.svg" alt="">
+              <img src="img/avatar-camila.svg" alt="">
+            </div>
+            <p><strong>+5.000 personas</strong> ya empezaron su reto · ★ 4,8</p>
+          </div>
         </div>
         <div class="col-lg-6">
-          <!-- Tarjeta que simula la pantalla de la app -->
-          <div class="tarjeta-app mx-auto">
-            <p class="mb-1 text-muted">Llevas sin fumar</p>
-            <p class="numero">12 días</p>
-            <div class="row text-center">
-              <div class="col"><p class="dato">240</p><small>cigarrillos evitados</small></div>
-              <div class="col"><p class="dato">$180.000</p><small>ahorrados</small></div>
-            </div>
-            <p class="mensaje">🌱 "Cada día que no fumas, tus pulmones te lo agradecen."</p>
+          <div class="hero-imagen">
+            <img src="img/hero-app.svg" alt="Pantalla de la app Pulmones Verdes con el conteo de días sin fumar" class="telefono">
+            <div class="chip chip-1"><strong>240</strong> cigarrillos evitados</div>
+            <div class="chip chip-2">💰 <strong>$180.000</strong> ahorrados</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECCIÓN 3: BENEFICIOS ===== -->
-  <section id="beneficios" class="py-5">
+  <section id="beneficios" class="seccion">
     <div class="container">
-      <h2 class="text-center mb-5">¿Por qué usar Pulmones Verdes?</h2>
+      <div class="titulo-seccion">
+        <span class="eyebrow">Beneficios</span>
+        <h2>¿Por qué usar Pulmones Verdes?</h2>
+        <p>Tres herramientas simples que te acompañan todos los días.</p>
+      </div>
       <div class="row g-4">
         <div class="col-md-4">
           <div class="beneficio">
-            <div class="icono">🚭</div>
+            <div class="icono">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h13M3 12v3h13v-3M19 9c0-2 2-2 2-4M19 15V12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 4l16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
             <h3>Conteo de cigarrillos</h3>
             <p>Ve en tiempo real cuántos cigarrillos has dejado de fumar.</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="beneficio">
-            <div class="icono">💰</div>
+            <div class="icono">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .9-3 2s1.3 1.7 3 2 3 .9 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6.5V8M12 16v1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
             <h3>Dinero ahorrado</h3>
             <p>Descubre cuánto dinero recuperas cada día sin fumar.</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="beneficio">
-            <div class="icono">💬</div>
+            <div class="icono">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 13s-3-1.8-3-3.6A1.6 1.6 0 0 1 12 8.6a1.6 1.6 0 0 1 3 .8C15 11.2 12 13 12 13z" fill="currentColor"/></svg>
+            </div>
             <h3>Mensajes de ánimo</h3>
             <p>Recibe frases motivadoras en los momentos difíciles.</p>
           </div>
@@ -108,26 +116,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ===== SECCIÓN 4: CTA ===== -->
-  <section class="cta py-5">
-    <div class="container text-center">
-      <h2>Tu primer día sin humo empieza hoy</h2>
-      <p>Regístrate gratis y sé de los primeros en usar la app.</p>
-      <a href="#registro" class="btn btn-light btn-lg" id="cta-principal">Registrarme gratis</a>
+  <section class="cta cta-banda">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-md-8">
+          <h2>Tu primer día sin humo empieza hoy</h2>
+          <p>Regístrate gratis y sé de los primeros en usar la app.</p>
+          <a href="#registro" class="btn btn-light btn-lg" id="cta-principal">Registrarme gratis</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="img/pulmones.svg" alt="Ilustración de pulmones formados por hojas" class="img-pulmones">
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== SECCIÓN 5: EXPLICACIÓN (cómo funciona + calculadora) ===== -->
-  <section id="como-funciona" class="py-5">
+  <section id="como-funciona" class="seccion">
     <div class="container">
-      <h2 class="text-center mb-5">¿Cómo funciona?</h2>
-      <div class="row g-4 mb-5">
+      <div class="titulo-seccion">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>Tres pasos para empezar</h2>
+      </div>
+      <div class="row g-4 mb-5 pasos">
         <div class="col-md-4 paso"><span>1</span><h3>Registra tu hábito</h3><p>Dinos cuántos cigarrillos fumas al día y cuánto cuestan.</p></div>
         <div class="col-md-4 paso"><span>2</span><h3>Empieza tu reto</h3><p>La app comienza a contar tus días libres de humo.</p></div>
         <div class="col-md-4 paso"><span>3</span><h3>Mira tu progreso</h3><p>Celebra tus logros y el dinero que ahorras.</p></div>
       </div>
 
-      <!-- Calculadora de ahorro -->
       <div class="calculadora mx-auto">
         <h3 class="text-center">Calcula cuánto ahorrarías en un mes</h3>
         <div class="row g-3 align-items-end">
@@ -148,41 +163,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ===== SECCIÓN 6: TESTIMONIOS ===== -->
-  <section id="testimonios" class="py-5 fondo-claro">
+  <section id="testimonios" class="seccion fondo-claro">
     <div class="container">
-      <h2 class="text-center mb-5">Historias que inspiran</h2>
+      <div class="titulo-seccion">
+        <span class="eyebrow">Testimonios</span>
+        <h2>Historias que inspiran</h2>
+      </div>
       <div class="row g-4">
         <div class="col-md-4">
           <div class="testimonio">
+            <div class="estrellas">★★★★★</div>
             <p>"Ver el dinero que ahorraba me motivó a seguir. Ya llevo 3 meses."</p>
-            <strong>— Laura, 28 años</strong>
+            <div class="autor"><img src="img/avatar-laura.svg" alt=""><div><strong>Laura</strong><small>28 años · 3 meses sin fumar</small></div></div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="testimonio">
+            <div class="estrellas">★★★★★</div>
             <p>"Los mensajes de ánimo me ayudaron en los días más difíciles."</p>
-            <strong>— Andrés, 35 años</strong>
+            <div class="autor"><img src="img/avatar-andres.svg" alt=""><div><strong>Andrés</strong><small>35 años · 6 semanas sin fumar</small></div></div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="testimonio">
+            <div class="estrellas">★★★★★</div>
             <p>"Es simple y efectiva. Por fin dejé un hábito de 10 años."</p>
-            <strong>— Camila, 41 años</strong>
+            <div class="autor"><img src="img/avatar-camila.svg" alt=""><div><strong>Camila</strong><small>41 años · 5 meses sin fumar</small></div></div>
           </div>
         </div>
       </div>
-      <p class="text-center text-muted mt-3"><small>*Testimonios de ejemplo para fines académicos.</small></p>
+      <p class="text-center text-muted mt-4"><small>*Testimonios de ejemplo para fines académicos.</small></p>
     </div>
   </section>
 
-  <!-- ===== SECCIÓN 7: CTA 2 (formulario de HubSpot) ===== -->
-  <section id="registro" class="cta py-5">
+  <section id="registro" class="cta seccion">
     <div class="container">
-      <div class="row align-items-center g-4">
+      <div class="row align-items-center g-4 g-lg-5">
         <div class="col-lg-6">
           <h2>Únete a Pulmones Verdes</h2>
           <p>Déjanos tus datos y te avisamos cuando la app esté disponible.</p>
+          <ul class="lista-check">
+            <li>Acceso gratuito desde el primer día</li>
+            <li>Recordatorios y mensajes de ánimo</li>
+            <li>Sin publicidad ni spam</li>
+          </ul>
         </div>
         <div class="col-lg-6">
           <div class="formulario">
@@ -194,11 +218,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ===== SECCIÓN 8: FAQ ===== -->
-  <section id="faq" class="py-5">
+  <section id="faq" class="seccion">
     <div class="container">
-      <h2 class="text-center mb-5">Preguntas frecuentes</h2>
-      <div class="accordion mx-auto" id="acordeon" style="max-width: 750px;">
+      <div class="titulo-seccion">
+        <span class="eyebrow">FAQ</span>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <div class="accordion mx-auto" id="acordeon">
         <div class="accordion-item">
           <h3 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p1">¿La app es gratis?</button>
@@ -235,8 +261,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ===== SECCIÓN 9: PRE-FOOTER ===== -->
-  <section class="prefooter py-5">
+  <section class="prefooter">
     <div class="container">
       <div class="row g-4 text-center">
         <div class="col-md-4"><p class="cifra">+5.000</p><p>personas registradas</p></div>
@@ -246,11 +271,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ===== SECCIÓN 10: FOOTER ===== -->
-  <footer class="py-4">
-    <div class="container text-center">
-      <p class="mb-1"><strong>Pulmones Verdes</strong> — Respira, avanza, vive.</p>
-      <p class="mb-0"><small>© 2026 Pulmones Verdes. Proyecto académico.</small></p>
+  <footer>
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <p class="marca-footer"><strong>Pulmones Verdes</strong></p>
+          <p class="mb-0">Respira, avanza, vive.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0"><small>© 2026 Pulmones Verdes. Proyecto académico.</small></p>
+        </div>
+      </div>
     </div>
   </footer>
 
