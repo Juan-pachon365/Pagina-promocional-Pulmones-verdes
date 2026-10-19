@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Pulmones formados por hojas">
+  <circle cx="200" cy="200" r="190" fill="#FFFFFF" opacity=".12"/>
+  <circle cx="200" cy="200" r="150" fill="#FFFFFF" opacity=".10"/>
+  <path d="M200 60v130" stroke="#E8F5E4" stroke-width="14" stroke-linecap="round"/>
+  <path d="M200 180c-18 10-32 22-44 40M200 180c18 10 32 22 44 40" stroke="#E8F5E4" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M182 150C120 112 58 168 66 262c5 58 74 72 108 30 22-28 24-84 8-142z" fill="#7BD389"/>
+  <path d="M218 150c62-38 124 18 116 112-5 58-74 72-108 30-22-28-24-84-8-142z" fill="#B9E8BE"/>
+  <g stroke="#2E7D32" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8">
+    <path d="M170 175c-20 30-40 60-70 80M150 205l-32-6M130 232l-26 12"/>
+    <path d="M230 175c20 30 40 60 70 80M250 205l32-6M270 232l26 12"/>
+  </g>
+  <path d="M300 92c20-22 52-24 64-12-10 18-38 32-64 12z" fill="#7BD389"/>
+  <path d="M86 320c-24-6-40-28-34-44 20 0 40 18 34 44z" fill="#B9E8BE"/>
+</svg>

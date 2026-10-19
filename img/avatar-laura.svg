@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Ilustración de laura">
+  <circle cx="48" cy="48" r="48" fill="#DCEFD8"/>
+  <path d="M16 96c4-22 18-32 32-32s28 10 32 32z" fill="#2E7D32"/>
+  <circle cx="48" cy="42" r="18" fill="#E8B996"/>
+  <path d="M28 44c-2-20 10-30 22-30s22 8 20 30c-4-10-10-16-20-16s-18 6-22 16z" fill="#3B2416"/><path d="M28 44c-2 14 0 26 4 30l4-24z M68 44c2 14 0 26-4 30l-4-24z" fill="#3B2416"/>
+</svg>
