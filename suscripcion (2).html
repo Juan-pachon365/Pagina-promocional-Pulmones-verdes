@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suscríbete | Pulmones Verdes</title>
+  <meta name="description" content="Respira con Pulmones Verdes y suscríbete para recibir tu bienvenida y mensajes de ánimo para dejar el cigarrillo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pulmonesverdeslanding.vercel.app/suscripcion.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#06140A">
+  <link rel="preload" href="fonts/poppins-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-display: swap; src: url('fonts/poppins-latin-600-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 800; font-display: swap; src: url('fonts/poppins-latin-800-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'DM Sans'; font-weight: 400; font-display: swap; src: url('fonts/dm-sans-latin-400-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'DM Sans'; font-weight: 700; font-display: swap; src: url('fonts/dm-sans-latin-700-normal.woff2') format('woff2'); }
+
+    :root {
+      --bg: #06140A; --verde: #2E7D32; --verde-2: #43A047; --neon: #7BD389; --menta: #C8F2CF;
+      --sol: #F6C453; --texto: #E6F5E8; --gris: #9FBFA5; --humo: #8a948f;
+      --vidrio: rgba(16, 46, 26, .55); --borde: rgba(123, 211, 137, .22);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif; color: var(--texto); background: var(--bg);
+      overflow-x: hidden; min-height: 100vh;
+    }
+    #fondo { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
+    .viñeta { position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(3,10,5,.85) 100%); }
+    .grid { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .5;
+      background-image: linear-gradient(rgba(123,211,137,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(123,211,137,.05) 1px, transparent 1px);
+      background-size: 32px 32px; mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%); }
+
+    /* barra superior */
+    .top { position: fixed; top: 0; left: 0; right: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 24px; font: 600 .75rem 'Poppins', sans-serif; letter-spacing: .15em; color: var(--gris); }
+    .top a { color: var(--texto); text-decoration: none; display: flex; align-items: center; gap: 8px; letter-spacing: 0; font-size: 1rem; }
+    .top a span b { color: var(--neon); }
+    .sonido { display: flex; align-items: center; gap: 10px; background: var(--vidrio); border: 1px solid var(--borde); color: var(--texto);
+      padding: 8px 14px; border-radius: 999px; cursor: pointer; font: 600 .78rem 'Poppins', sans-serif; letter-spacing: .05em; backdrop-filter: blur(10px); }
+    .sonido:hover { border-color: var(--neon); }
+    .eq { display: inline-flex; gap: 2px; align-items: flex-end; height: 14px; }
+    .eq i { width: 3px; background: var(--neon); border-radius: 2px; height: 4px; transition: height .2s; }
+    .sonando .eq i { animation: eq 0.9s ease-in-out infinite; }
+    .sonando .eq i:nth-child(2) { animation-delay: .15s; } .sonando .eq i:nth-child(3) { animation-delay: .3s; } .sonando .eq i:nth-child(4) { animation-delay: .45s; }
+    @keyframes eq { 0%,100% { height: 4px; } 50% { height: 14px; } }
+
+    /* escenario */
+    .escena { position: relative; z-index: 3; min-height: 100vh; display: grid; grid-template-columns: 1.05fr 1fr; align-items: center;
+      gap: 32px; max-width: 1180px; margin: 0 auto; padding: 96px 24px 48px; }
+
+    /* pulmones */
+    .orbe { position: relative; aspect-ratio: 1; width: min(100%, 520px); margin: 0 auto; display: grid; place-items: center; }
+    .anillo { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid var(--borde); }
+    .a1 { inset: 4%; border: 2px dashed rgba(123,211,137,.35); animation: girar 40s linear infinite; }
+    .a2 { inset: 12%; border-color: rgba(246,196,83,.25); border-style: dotted; border-width: 2px; animation: girar 28s linear infinite reverse; }
+    .a3 { inset: 0; border: none; background: conic-gradient(from 0deg, transparent 0 70%, rgba(123,211,137,.55) 85%, transparent 100%);
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+      animation: girar 6s linear infinite; }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    .onda { position: absolute; inset: 22%; border-radius: 50%; border: 2px solid var(--neon); opacity: 0; }
+    .respirando .onda { animation: onda 8s ease-out infinite; }
+    .respirando .onda.o2 { animation-delay: 4s; }
+    @keyframes onda { 0% { transform: scale(.9); opacity: .6; } 50% { opacity: 0; transform: scale(1.5); } 100% { opacity: 0; transform: scale(1.5); } }
+    .halo { position: absolute; inset: 25%; border-radius: 50%; background: radial-gradient(circle, rgba(67,160,71,.55), transparent 70%); filter: blur(20px);
+      animation: halo 8s ease-in-out infinite; }
+    @keyframes halo { 0%,100% { transform: scale(.85); opacity: .55; } 50% { transform: scale(1.15); opacity: 1; } }
+    #pulmones { width: 56%; overflow: visible; animation: respirar 8s ease-in-out infinite; filter: drop-shadow(0 0 24px rgba(123,211,137,.45)); }
+    @keyframes respirar { 0%,100% { transform: scale(.9); } 50% { transform: scale(1.08); } }
+    #pulmones .gris { fill: #2b3a30; }
+    #lleno { transition: y 2.4s cubic-bezier(.6,0,.2,1), height 2.4s cubic-bezier(.6,0,.2,1); }
+    .bronquio { stroke: rgba(230,255,233,.85); stroke-width: .7; fill: none; stroke-linecap: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: trazo 2.4s .4s ease forwards; }
+    @keyframes trazo { to { stroke-dashoffset: 0; } }
+    .guia { position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); text-align: center; white-space: nowrap; }
+    .guia b { display: block; font: 800 1.35rem 'Poppins', sans-serif; color: var(--texto); letter-spacing: .02em; }
+    .guia span { font: 600 .72rem 'Poppins', sans-serif; letter-spacing: .25em; color: var(--neon); }
+    .chip { position: absolute; background: var(--vidrio); border: 1px solid var(--borde); backdrop-filter: blur(10px); border-radius: 14px;
+      padding: 10px 14px; font-size: .82rem; color: var(--gris); animation: flotar 6s ease-in-out infinite; }
+    .chip strong { display: block; font: 800 1.15rem 'Poppins', sans-serif; color: var(--texto); }
+    .chip.c1 { top: 12%; left: -2%; } .chip.c2 { top: 20%; right: -4%; animation-delay: -2s; } .chip.c3 { bottom: 20%; left: -6%; animation-delay: -4s; }
+    .chip.c2 strong { color: var(--sol); } .chip.c3 strong { color: var(--neon); }
+    @keyframes flotar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    /* tarjeta */
+    .tarjeta { position: relative; background: var(--vidrio); border: 1px solid var(--borde); border-radius: 28px; padding: 40px 36px;
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 30px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+      overflow: hidden; transform-style: preserve-3d; transition: transform .2s ease-out; }
+    .tarjeta::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
+      background: linear-gradient(var(--ang, 120deg), transparent 30%, rgba(123,211,137,.8), transparent 70%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: borde 6s linear infinite; }
+    @property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    @keyframes borde { to { --ang: 360deg; } }
+    .eyebrow { font: 600 .72rem 'Poppins', monospace; letter-spacing: .25em; color: var(--neon); display: flex; align-items: center; gap: 8px; }
+    .eyebrow .punto { width: 8px; height: 8px; border-radius: 50%; background: #ff5a4e; box-shadow: 0 0 10px #ff5a4e; animation: latido 1.2s infinite; }
+    @keyframes latido { 50% { opacity: .3; } }
+    h1 { font: 800 clamp(2rem, 4vw, 2.9rem)/1.08 'Poppins', sans-serif; margin: 14px 0 14px; letter-spacing: -.02em; }
+    h1 .brillo { background: linear-gradient(90deg, var(--neon), #E6FFE9, var(--neon)); background-size: 200% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent; animation: brillo 4s linear infinite; }
+    @keyframes brillo { to { background-position: -200% 0; } }
+    #tipeo::after { content: "▍"; color: var(--neon); animation: latido 1s steps(1) infinite; margin-left: 2px; }
+    .sub { color: var(--gris); margin: 0 0 26px; line-height: 1.6; }
+    .campo { position: relative; }
+    .campo input { width: 100%; font: 400 1.05rem 'DM Sans', sans-serif; color: var(--texto); background: rgba(3,12,6,.6);
+      border: 1.5px solid var(--borde); border-radius: 16px; padding: 22px 18px 10px; outline: none; transition: border-color .2s, box-shadow .2s; }
+    .campo label { position: absolute; left: 18px; top: 17px; color: var(--gris); pointer-events: none; transition: all .2s; font-size: 1rem; }
+    .campo input:focus, .campo input:not(:placeholder-shown) { border-color: var(--neon); box-shadow: 0 0 0 4px rgba(123,211,137,.12), 0 0 30px rgba(123,211,137,.15); }
+    .campo input:focus + label, .campo input:not(:placeholder-shown) + label { top: 7px; font-size: .72rem; color: var(--neon); letter-spacing: .08em; }
+    .btn { position: relative; width: 100%; margin-top: 14px; border: 0; border-radius: 16px; padding: 17px 24px; cursor: pointer; overflow: hidden;
+      font: 800 1.05rem 'Poppins', sans-serif; color: #06140A; background: linear-gradient(135deg, #9BE6A6, var(--neon) 40%, #43A047);
+      box-shadow: 0 10px 30px rgba(123,211,137,.35); transition: transform .15s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(123,211,137,.5); }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; transform: skewX(-20deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: barrido 3s ease-in-out infinite; }
+    @keyframes barrido { 0%,60% { left: -60%; } 100% { left: 130%; } }
+    .btn[disabled] { cursor: wait; filter: saturate(.6); }
+    .btn .cargando { display: none; width: 18px; height: 18px; border: 3px solid rgba(6,20,10,.25); border-top-color: #06140A; border-radius: 50%; animation: girar .8s linear infinite; vertical-align: -3px; margin-right: 8px; }
+    .btn[disabled] .cargando { display: inline-block; }
+    .estado { min-height: 1.4em; margin: 14px 0 0; font-weight: 700; font-size: .95rem; }
+    .estado.error { color: #ff8a80; }
+    .confianza { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 22px; color: var(--gris); font-size: .85rem; }
+    .confianza span::before { content: "✓ "; color: var(--neon); font-weight: 700; }
+    .volver { display: inline-block; margin-top: 22px; color: var(--gris); text-decoration: none; font-weight: 700; font-size: .9rem; }
+    .volver:hover { color: var(--neon); }
+
+    /* éxito */
+    .exito { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      padding: 36px; background: linear-gradient(160deg, rgba(14,48,26,.97), rgba(6,20,10,.98)); opacity: 0; visibility: hidden; transition: opacity .6s; }
+    .exito.on { opacity: 1; visibility: visible; }
+    .exito svg { width: 110px; height: 110px; }
+    .exito circle { fill: none; stroke: var(--neon); stroke-width: 4; stroke-dasharray: 300; stroke-dashoffset: 300; }
+    .exito path { fill: none; stroke: var(--neon); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 80; stroke-dashoffset: 80; }
+    .exito.on circle { animation: dibujar 1s ease forwards; } .exito.on path { animation: dibujar .6s .8s ease forwards; }
+    @keyframes dibujar { to { stroke-dashoffset: 0; } }
+    .exito h2 { font: 800 1.9rem 'Poppins', sans-serif; margin: 18px 0 8px; }
+    .exito p { color: var(--gris); margin: 0 0 6px; max-width: 30ch; }
+    .exito .correo { color: var(--neon); font-weight: 700; word-break: break-all; }
+    .exito button { margin-top: 18px; background: transparent; border: 1px solid var(--borde); color: var(--texto); border-radius: 999px; padding: 10px 20px; cursor: pointer; font: 600 .85rem 'Poppins', sans-serif; }
+    .exito button:hover { border-color: var(--neon); }
+
+    .pie { position: relative; z-index: 3; text-align: center; color: #5f7d66; font-size: .78rem; padding: 0 24px 24px; }
+
+    @media (max-width: 900px) {
+      .escena { grid-template-columns: 1fr; padding-top: 84px; gap: 8px; }
+      .orbe { width: min(88vw, 400px); }
+      .chip { padding: 7px 10px; font-size: .7rem; border-radius: 10px; }
+      .chip strong { font-size: .95rem; }
+      .chip.c1 { top: 2%; left: -2%; } .chip.c2 { top: 6%; right: -2%; } .chip.c3 { display: none; }
+      .tarjeta { padding: 32px 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fondo" aria-hidden="true"></canvas>
+  <div class="grid" aria-hidden="true"></div>
+  <div class="viñeta" aria-hidden="true"></div>
+
+  <header class="top">
+    <a href="./" aria-label="Pulmones Verdes, ir al inicio">
+      <svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4v18" stroke="#C8F2CF" stroke-width="3" stroke-linecap="round"/><path d="M18 13C10 9 3 17 5 30c1 5 9 5 12 0 2-5 2-11 1-17z" fill="#43A047"/><path d="M22 13c8-4 15 4 13 17-1 5-9 5-12 0-2-5-2-11-1-17z" fill="#81C784"/></svg>
+      <span>Pulmones <b>Verdes</b></span>
+    </a>
+    <button class="sonido" id="btn-sonido" type="button" aria-pressed="false">
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="txt-sonido">Activar sonido</span>
+    </button>
+  </header>
+
+  <main class="escena">
+    <!-- Orbe de respiración -->
+    <section class="orbe respirando" aria-label="Ejercicio de respiración guiada">
+      <div class="anillo a1"></div><div class="anillo a2"></div><div class="anillo a3"></div>
+      <div class="onda"></div><div class="onda o2"></div>
+      <div class="halo"></div>
+      <svg id="pulmones" viewBox="0 0 40 40" aria-hidden="true">
+        <defs>
+          <clipPath id="recorte"><rect id="lleno" x="0" y="34" width="40" height="40"/></clipPath>
+          <linearGradient id="gv" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#2E7D32"/><stop offset="1" stop-color="#9BE6A6"/></linearGradient>
+        </defs>
+        <g class="gris">
+          <path d="M18 13C10 9 3 17 5 30c1 5 9 5 12 0 2-5 2-11 1-17z"/><path d="M22 13c8-4 15 4 13 17-1 5-9 5-12 0-2-5-2-11-1-17z"/>
+        </g>
+        <g clip-path="url(#recorte)" fill="url(#gv)">
+          <path d="M18 13C10 9 3 17 5 30c1 5 9 5 12 0 2-5 2-11 1-17z"/><path d="M22 13c8-4 15 4 13 17-1 5-9 5-12 0-2-5-2-11-1-17z"/>
+        </g>
+        <path class="bronquio" d="M20 4v14M20 15c-2 3-5 4-8 9M20 15c2 3 5 4 8 9M13 21l-3 1M27 21l3 1"/>
+      </svg>
+      <div class="chip c1"><strong id="k-cig">0</strong>cigarrillos evitados</div>
+      <div class="chip c2"><strong id="k-din">$0</strong>ahorrados en un mes</div>
+      <div class="chip c3"><strong id="k-o2">90%</strong>oxígeno en sangre</div>
+      <div class="guia" aria-live="off"><b id="guia-txt">Inhala…</b><span id="guia-sub">RESPIRA CONMIGO</span></div>
+    </section>
+
+    <!-- Tarjeta de suscripción -->
+    <section class="tarjeta" id="tarjeta">
+      <div class="eyebrow"><span class="punto"></span>DÍA 01 · TU RETO EMPIEZA AQUÍ</div>
+      <h1>Cada respiración<br><span class="brillo" id="tipeo"></span></h1>
+      <p class="sub">Suscríbete y recibe en tu correo tu bienvenida, tu plan para empezar y mensajes de ánimo para los días difíciles.</p>
+
+      <form id="form-suscripcion" novalidate>
+        <div class="campo">
+          <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required>
+          <label for="email">Tu correo electrónico</label>
+        </div>
+        <button type="submit" class="btn" id="btn-enviar"><span class="cargando" aria-hidden="true"></span><span id="btn-txt">Quiero respirar mejor 🌱</span></button>
+      </form>
+      <p class="estado" id="estado" role="status" aria-live="polite"></p>
+
+      <div class="confianza"><span>Gratis</span><span>Sin spam</span><span>Cancela cuando quieras</span></div>
+      <a href="./" class="volver">← Volver a la página principal</a>
+
+      <div class="exito" id="exito" aria-live="polite">
+        <svg viewBox="0 0 110 110" aria-hidden="true"><circle cx="55" cy="55" r="48"/><path d="M33 57 L49 72 L78 40"/></svg>
+        <h2>¡Bienvenido a bordo!</h2>
+        <p>Te enviamos tu bienvenida a</p>
+        <p class="correo" id="correo-ok"></p>
+        <p>Revisa tu bandeja de entrada (y spam, por si acaso).</p>
+        <button type="button" id="btn-otra">Suscribir otro correo</button>
+      </div>
+    </section>
+  </main>
+
+  <p class="pie">© 2026 Pulmones Verdes · Proyecto académico · No reemplaza la consulta con un profesional de la salud.</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+  <script>
+  /* ================== EmailJS ================== */
+  const EMAILJS_PUBLIC_KEY = 'J6Z1_8mZVkgUtqrYX';
+  const EMAILJS_SERVICE_ID = 'service_hf6bv6f';
+  const EMAILJS_TEMPLATE_ID = 'template_7nqsonc';
+  if (window.emailjs) emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ================== SONIDO (Web Audio, sin archivos) ================== */
+  const Sonido = (() => {
+    let ctx, master, ambiente = [], activo = false, ruidoBuf;
+    function iniciar() {
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
+      // buffer de ruido para viento / respiración
+      ruidoBuf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
+      const d = ruidoBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      // colchón ambiental: acorde suave (Do mayor 9) con LFO
+      [130.81, 196.0, 261.63, 293.66, 392.0].forEach((f, i) => {
+        const o = ctx.createOscillator(), g = ctx.createGain(), lfo = ctx.createOscillator(), lg = ctx.createGain();
+        o.type = i % 2 ? 'sine' : 'triangle'; o.frequency.value = f; o.detune.value = (i - 2) * 4;
+        g.gain.value = 0.018; lfo.frequency.value = 0.05 + i * 0.03; lg.gain.value = 0.012;
+        lfo.connect(lg).connect(g.gain); o.connect(g).connect(master); o.start(); lfo.start(); ambiente.push(o, lfo);
+      });
+      // viento de bosque
+      const r = ctx.createBufferSource(); r.buffer = ruidoBuf; r.loop = true;
+      const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 500; f.Q.value = 0.6;
+      const g = ctx.createGain(); g.gain.value = 0.025; r.connect(f).connect(g).connect(master); r.start();
+    }
+    function toggle() {
+      if (!ctx) iniciar();
+      if (ctx.state === 'suspended') ctx.resume();
+      activo = !activo;
+      master.gain.cancelScheduledValues(ctx.currentTime);
+      master.gain.linearRampToValueAtTime(activo ? 1 : 0, ctx.currentTime + 1.2);
+      return activo;
+    }
+    function respiro(inhala) { // soplo filtrado sincronizado con la guía
+      if (!activo) return;
+      const t = ctx.currentTime, s = ctx.createBufferSource(); s.buffer = ruidoBuf;
+      const f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.Q.value = 1;
+      f.frequency.setValueAtTime(inhala ? 300 : 1200, t); f.frequency.linearRampToValueAtTime(inhala ? 1400 : 250, t + 3.8);
+      const g = ctx.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.09, t + 1.6); g.gain.linearRampToValueAtTime(0, t + 3.9);
+      s.connect(f).connect(g).connect(master); s.start(t); s.stop(t + 4);
+    }
+    function nota(freq, t0, dur = 0.5, vol = 0.12, tipo = 'sine') {
+      if (!activo) return;
+      const t = ctx.currentTime + t0, o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = tipo; o.frequency.value = freq;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g).connect(master); o.start(t); o.stop(t + dur + 0.05);
+    }
+    const tic = () => nota(1760, 0, 0.08, 0.03, 'triangle');
+    const exito = () => [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => { nota(f, i * 0.09, 1.2, 0.1); nota(f / 2, i * 0.09, 1.4, 0.05, 'triangle'); });
+    const error = () => { nota(220, 0, 0.25, 0.1, 'square'); nota(185, 0.18, 0.35, 0.1, 'square'); };
+    return { toggle, respiro, tic, exito, error, get activo() { return activo; } };
+  })();
+
+  const btnSonido = document.getElementById('btn-sonido');
+  btnSonido.addEventListener('click', () => {
+    const on = Sonido.toggle();
+    btnSonido.classList.toggle('sonando', on);
+    btnSonido.setAttribute('aria-pressed', on);
+    document.getElementById('txt-sonido').textContent = on ? 'Sonido activo' : 'Activar sonido';
+  });
+
+  /* ================== FONDO: hojas, humo que se vuelve verde, luciérnagas ================== */
+  const cv = document.getElementById('fondo'), cx = cv.getContext('2d');
+  let W, H, DPR = Math.min(2, devicePixelRatio || 1), mouse = { x: .5, y: .5 }, rafaga = [];
+  function medir() { W = cv.width = innerWidth * DPR; H = cv.height = innerHeight * DPR; cv.style.width = innerWidth + 'px'; cv.style.height = innerHeight + 'px'; }
+  addEventListener('resize', medir); medir();
+  addEventListener('pointermove', e => { mouse.x = e.clientX / innerWidth; mouse.y = e.clientY / innerHeight; });
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const N = innerWidth < 700 ? 40 : 80;
+  const parts = Array.from({ length: N }, (_, i) => nuevaParticula(true, i));
+  function nuevaParticula(inicial, i = 0) {
+    const tipo = i % 5 === 0 ? 'luz' : 'hoja';
+    return { tipo, x: rnd(0, 1), y: inicial ? rnd(0, 1) : 1.08, z: rnd(.3, 1), vy: rnd(.0004, .0013), giro: rnd(0, 6.28), vg: rnd(-.02, .02),
+      fase: rnd(0, 6.28), humo: tipo === 'hoja' && !inicial ? rnd(.5, .9) : 0, c: Math.random() < .5 ? '#7BD389' : '#43A047' };
+  }
+  function hoja(x, y, s, rot, color, alpha) {
+    cx.save(); cx.translate(x, y); cx.rotate(rot); cx.scale(s, s); cx.globalAlpha = alpha;
+    cx.fillStyle = color; cx.beginPath(); cx.moveTo(-6, 5); cx.bezierCurveTo(-6, -2, -2, -6, 7, -6); cx.bezierCurveTo(7, 1, 3, 5, -6, 5); cx.fill();
+    cx.strokeStyle = 'rgba(6,20,10,.35)'; cx.lineWidth = .8; cx.beginPath(); cx.moveTo(-5, 4); cx.lineTo(5, -4); cx.stroke(); cx.restore();
+  }
+  function mezcla(c1, c2, k) { // humo gris -> verde
+    const a = parseInt(c1.slice(1), 16), b = parseInt(c2.slice(1), 16);
+    const r = (a >> 16) + ((b >> 16) - (a >> 16)) * k, g = ((a >> 8) & 255) + (((b >> 8) & 255) - ((a >> 8) & 255)) * k, bl = (a & 255) + ((b & 255) - (a & 255)) * k;
+    return `rgb(${r | 0},${g | 0},${bl | 0})`;
+  }
+  let t0 = performance.now();
+  function cuadro(now) {
+    const t = (now - t0) / 1000;
+    cx.clearRect(0, 0, W, H);
+    // aurora
+    const gx = W * (.5 + (mouse.x - .5) * .15), gy = H * (.42 + (mouse.y - .5) * .15);
+    const g = cx.createRadialGradient(gx, gy, 0, gx, gy, Math.max(W, H) * .6);
+    g.addColorStop(0, `rgba(46,125,50,${.32 + .08 * Math.sin(t * .8)})`); g.addColorStop(.5, 'rgba(18,48,27,.25)'); g.addColorStop(1, 'rgba(6,20,10,0)');
+    cx.fillStyle = g; cx.fillRect(0, 0, W, H);
+    for (const p of parts) {
+      p.y -= p.vy * (reducir ? 0 : 1) * (1 + p.z); p.giro += p.vg; p.humo = Math.max(0, p.humo - .004);
+      if (p.y < -.08) Object.assign(p, nuevaParticula(false, p.tipo === 'luz' ? 0 : 1));
+      const px = (p.x + Math.sin(t * .6 + p.fase) * .015 + (mouse.x - .5) * .04 * p.z) * W, py = (p.y + (mouse.y - .5) * .03 * p.z) * H;
+      if (p.tipo === 'luz') {
+        const a = .4 + .6 * Math.abs(Math.sin(t * 1.5 + p.fase));
+        cx.globalAlpha = a; cx.fillStyle = '#F6E7A1'; cx.shadowColor = '#F6C453'; cx.shadowBlur = 12 * DPR;
+        cx.beginPath(); cx.arc(px, py, 1.6 * DPR * p.z, 0, 6.28); cx.fill(); cx.shadowBlur = 0;
+      } else if (p.humo > .35) { // aún es humo
+        cx.globalAlpha = .12 * p.z; cx.fillStyle = mezcla('#8a948f', '#7BD389', 1 - p.humo);
+        cx.beginPath(); cx.arc(px, py, (10 + (1 - p.humo) * 16) * DPR * p.z, 0, 6.28); cx.fill();
+      } else {
+        hoja(px, py, DPR * p.z * 1.3, p.giro, p.c, .75 * p.z * Math.min(1, (.35 - p.humo) * 6 + .2));
+      }
+    }
+    // ráfaga de hojas al suscribirse
+    for (let i = rafaga.length - 1; i >= 0; i--) {
+      const r = rafaga[i]; r.vy += .25 * DPR; r.vx *= .985; r.x += r.vx; r.y += r.vy; r.rot += r.vr; r.vida -= .008;
+      hoja(r.x, r.y, r.s, r.rot, r.c, Math.max(0, r.vida));
+      if (r.vida <= 0) rafaga.splice(i, 1);
+    }
+    cx.globalAlpha = 1;
+    requestAnimationFrame(cuadro);
+  }
+  requestAnimationFrame(cuadro);
+  function explotar(el) {
+    const b = el.getBoundingClientRect(), x = (b.left + b.width / 2) * DPR, y = (b.top + b.height / 2) * DPR;
+    const colores = ['#7BD389', '#43A047', '#9BE6A6', '#F6C453', '#C8F2CF'];
+    for (let i = 0; i < 90; i++) { const a = rnd(0, 6.28), v = rnd(4, 14) * DPR;
+      rafaga.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 8 * DPR, rot: rnd(0, 6.28), vr: rnd(-.3, .3), s: rnd(1, 2.2) * DPR, c: colores[i % 5], vida: 1 }); }
+  }
+
+  /* ================== RESPIRACIÓN GUIADA + CONTADORES ================== */
+  const guia = document.getElementById('guia-txt'), guiaSub = document.getElementById('guia-sub');
+  let inhalar = true, ciclos = 0;
+  function pasoRespiracion() {
+    guia.textContent = inhalar ? 'Inhala…' : 'Exhala…';
+    guiaSub.textContent = inhalar ? 'LLENA TUS PULMONES' : 'SUELTA EL HUMO';
+    Sonido.respiro(inhalar);
+    if (!inhalar) ciclos++;
+    inhalar = !inhalar;
+  }
+  pasoRespiracion(); setInterval(pasoRespiracion, 4000);
+
+  // llenado verde de los pulmones
+  const lleno = document.getElementById('lleno');
+  function llenar(k) { lleno.setAttribute('y', 34 - k * 34); }
+  setTimeout(() => llenar(.55), 600);
+
+  function contar(el, hasta, pre = '', suf = '', ms = 2200) {
+    const ini = performance.now();
+    (function f(n) { const k = Math.min(1, (n - ini) / ms), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = pre + Math.round(hasta * e).toLocaleString('es-CO') + suf; if (k < 1) requestAnimationFrame(f); })(ini);
+  }
+  setTimeout(() => { contar(document.getElementById('k-cig'), 300); contar(document.getElementById('k-din'), 300000, '$'); contar(document.getElementById('k-o2'), 97, '', '%', 1800); }, 700);
+
+  /* ================== TEXTO QUE SE ESCRIBE SOLO ================== */
+  const frases = ['te devuelve la vida.', 'cuenta.', 'es un paso.', 'es más verde.'];
+  const tipeo = document.getElementById('tipeo'); let fi = 0, ci = 0, borrando = false;
+  (function escribir() {
+    const f = frases[fi];
+    tipeo.textContent = f.slice(0, ci);
+    if (!borrando && ci < f.length) { ci++; setTimeout(escribir, 70); }
+    else if (!borrando) { borrando = true; setTimeout(escribir, 2200); }
+    else if (ci > 0) { ci--; setTimeout(escribir, 35); }
+    else { borrando = false; fi = (fi + 1) % frases.length; setTimeout(escribir, 300); }
+  })();
+
+  /* ================== TARJETA 3D ================== */
+  const tarjeta = document.getElementById('tarjeta');
+  if (!reducir && matchMedia('(hover: hover)').matches) {
+    tarjeta.addEventListener('pointermove', e => { const b = tarjeta.getBoundingClientRect();
+      const rx = ((e.clientY - b.top) / b.height - .5) * -6, ry = ((e.clientX - b.left) / b.width - .5) * 8;
+      tarjeta.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`; });
+    tarjeta.addEventListener('pointerleave', () => tarjeta.style.transform = '');
+  }
+
+  /* ================== FORMULARIO ================== */
+  const form = document.getElementById('form-suscripcion'), input = document.getElementById('email'),
+        boton = document.getElementById('btn-enviar'), btnTxt = document.getElementById('btn-txt'),
+        estado = document.getElementById('estado'), exito = document.getElementById('exito');
+  input.addEventListener('input', () => Sonido.tic());
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      estado.className = 'estado error'; estado.textContent = 'Escribe un correo válido para continuar.';
+      Sonido.error(); input.focus();
+      tarjeta.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }], { duration: 300 });
+      return;
+    }
+    boton.disabled = true; btnTxt.textContent = 'Enviando…'; estado.textContent = ''; estado.className = 'estado';
+    if (!window.emailjs) { falla(new Error('EmailJS no cargó')); return; }
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { email })
+      .then(() => {
+        llenar(1); explotar(boton); Sonido.exito();
+        document.getElementById('correo-ok').textContent = email;
+        exito.classList.add('on'); form.reset();
+        if (window.dataLayer) window.dataLayer.push({ event: 'suscripcion_email' });
+      })
+      .catch(falla)
+      .finally(() => { boton.disabled = false; btnTxt.textContent = 'Quiero respirar mejor 🌱'; });
+  });
+  function falla(err) {
+    console.error('EmailJS:', err); Sonido.error();
+    estado.className = 'estado error'; estado.textContent = 'No pudimos enviar el correo. Intenta de nuevo en un momento.';
+    boton.disabled = false; btnTxt.textContent = 'Quiero respirar mejor 🌱';
+  }
+  document.getElementById('btn-otra').addEventListener('click', () => { exito.classList.remove('on'); llenar(.55); input.focus(); });
+  </script>
+</body>
+</html>
