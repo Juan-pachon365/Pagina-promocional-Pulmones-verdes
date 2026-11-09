@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="color-scheme" content="dark light">
+  <meta name="supported-color-schemes" content="dark light">
+  <title>Bienvenido a Pulmones Verdes</title>
+  <style>
+    /* Mejoras progresivas: Apple Mail / iOS animan; Gmail y Outlook usan los estilos inline */
+    @keyframes pulso { 0%,100% { box-shadow: 0 0 0 0 rgba(123,211,137,.55); } 50% { box-shadow: 0 0 0 12px rgba(123,211,137,0); } }
+    @keyframes brillo { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    @keyframes aparecer { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    @keyframes latido { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+    .cta-btn { animation: pulso 2.2s ease-in-out infinite; }
+    .shine { background-image: linear-gradient(90deg, #7BD389 0%, #E6FFE9 50%, #7BD389 100%); background-size: 200% 100%;
+             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: brillo 4s linear infinite; }
+    .reveal { animation: aparecer .8s ease-out both; }
+    .reveal-2 { animation-delay: .15s; } .reveal-3 { animation-delay: .3s; } .reveal-4 { animation-delay: .45s; }
+    .live { animation: latido 1.4s ease-in-out infinite; }
+    a { text-decoration: none; }
+    @media only screen and (max-width: 620px) {
+      .wrap { width: 100% !important; }
+      .px { padding-left: 22px !important; padding-right: 22px !important; }
+      .col { display: block !important; width: 100% !important; padding: 0 0 12px !important; }
+      .h1 { font-size: 26px !important; }
+      .hero-img { width: 100% !important; height: auto !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#06140A; -webkit-text-size-adjust:100%;">
+  <!-- Texto de vista previa -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; font-size:1px; line-height:1px; color:#06140A;">Suscripción confirmada ✓ Tu contador de días sin humo ya está en marcha 🌱&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#06140A" style="background-color:#06140A;">
+    <tr>
+      <td align="center" style="padding:28px 12px;">
+        <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#0B2414; border:1px solid #1E4A2A; border-radius:20px; overflow:hidden;">
+
+          <!-- ========== 1. LOGO / CABECERA ========== -->
+          <tr>
+            <td class="px" style="padding:22px 32px; border-bottom:1px solid #1E4A2A;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="middle" style="font-family:Arial, Helvetica, sans-serif;">
+                    <img src="https://pulmonesverdeslanding.vercel.app/img/logo-email.png" width="36" height="36" alt="" style="display:inline-block; vertical-align:middle; border:0; width:36px; height:36px; background-color:#FFFFFF; border-radius:50%; padding:4px;">
+                    <span style="display:inline-block; vertical-align:middle; margin-left:10px; font-size:18px; font-weight:bold; color:#FFFFFF;">Pulmones <span style="color:#7BD389;">Verdes</span></span>
+                  </td>
+                  <td align="right" valign="middle" style="font-family:'Courier New', Courier, monospace; font-size:11px; letter-spacing:1.5px; color:#9FE0AA; white-space:nowrap;">
+                    <span class="live" style="display:inline-block; width:8px; height:8px; border-radius:50%; background-color:#7BD389; vertical-align:middle;"></span>&nbsp;CONFIRMADO
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ========== HERO ANIMADO (GIF: funciona en Gmail, Outlook y Apple Mail) ========== -->
+          <tr>
+            <td bgcolor="#12301B" style="background-color:#12301B; line-height:0; font-size:0;">
+              <img class="hero-img" src="https://pulmonesverdeslanding.vercel.app/img/email-hero.gif" width="600" height="320" alt="Pulmones Verdes: rompe el hábito, respira mejor, 240 cigarrillos evitados y $300.000 ahorrados" style="display:block; width:600px; max-width:100%; height:auto; border:0; color:#9FE0AA; font-family:Arial, sans-serif; font-size:16px;">
+            </td>
+          </tr>
+
+          <!-- ========== 2. SALUDO ========== -->
+          <tr>
+            <td class="px reveal" style="padding:36px 40px 8px; font-family:Arial, Helvetica, sans-serif;">
+              <p style="margin:0 0 10px; font-family:'Courier New', Courier, monospace; font-size:12px; letter-spacing:2px; color:#7BD389;">&gt; DÍA_01 · INICIANDO RETO</p>
+              <h1 class="h1" style="margin:0 0 14px; font-size:30px; line-height:1.2; color:#FFFFFF; font-weight:bold;">¡Hola! Tu primer día<br><span class="shine" style="color:#7BD389;">sin humo empieza hoy.</span></h1>
+              <p style="margin:0; font-size:16px; line-height:1.65; color:#B9D8BE;">Confirmamos tu suscripción con <strong style="color:#FFFFFF;">{{email}}</strong>. Desde ahora Pulmones Verdes te acompaña con datos reales de tu progreso y mensajes de ánimo cuando más los necesites.</p>
+            </td>
+          </tr>
+
+          <!-- ========== 3. CONTENIDO: TABLERO + LÍNEA DE TIEMPO ========== -->
+          <tr>
+            <td class="px" style="padding:28px 40px 4px;">
+              <!-- Tablero de métricas -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="col reveal reveal-2" width="33%" valign="top" style="padding:0 6px 0 0;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#102E1A; border:1px solid #23573A; border-radius:14px;">
+                      <tr><td style="padding:18px 16px; font-family:Arial, Helvetica, sans-serif;">
+                        <p style="margin:0; font-size:26px; font-weight:bold; color:#7BD389;">300</p>
+                        <p style="margin:4px 0 0; font-size:12px; line-height:1.4; color:#9FBFA5;">cigarrillos que evitas en 30 días*</p>
+                      </td></tr>
+                    </table>
+                  </td>
+                  <td class="col reveal reveal-3" width="34%" valign="top" style="padding:0 3px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#102E1A; border:1px solid #23573A; border-radius:14px;">
+                      <tr><td style="padding:18px 16px; font-family:Arial, Helvetica, sans-serif;">
+                        <p style="margin:0; font-size:26px; font-weight:bold; color:#F6C453;">$300K</p>
+                        <p style="margin:4px 0 0; font-size:12px; line-height:1.4; color:#9FBFA5;">pesos que vuelven a tu bolsillo*</p>
+                      </td></tr>
+                    </table>
+                  </td>
+                  <td class="col reveal reveal-4" width="33%" valign="top" style="padding:0 0 0 6px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#102E1A; border:1px solid #23573A; border-radius:14px;">
+                      <tr><td style="padding:18px 16px; font-family:Arial, Helvetica, sans-serif;">
+                        <p style="margin:0; font-size:26px; font-weight:bold; color:#FFFFFF;">24/7</p>
+                        <p style="margin:4px 0 0; font-size:12px; line-height:1.4; color:#9FBFA5;">mensajes de ánimo cuando los necesites</p>
+                      </td></tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:10px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#6F9277;">*Calculado con 10 cigarrillos al día a $1.000 cada uno.</p>
+
+              <!-- Línea de tiempo del cuerpo -->
+              <p style="margin:30px 0 16px; font-family:'Courier New', Courier, monospace; font-size:12px; letter-spacing:2px; color:#7BD389;">&gt; LO QUE PASA EN TU CUERPO</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial, Helvetica, sans-serif;">
+                <tr>
+                  <td width="86" valign="top" style="padding:0 0 18px; border-left:2px solid #7BD389;"><span style="display:inline-block; margin-left:-7px; width:12px; height:12px; border-radius:50%; background-color:#7BD389;"></span><span style="font-size:13px; font-weight:bold; color:#FFFFFF; padding-left:10px;">20 min</span></td>
+                  <td valign="top" style="padding:0 0 18px; font-size:14px; line-height:1.5; color:#B9D8BE;">Tu ritmo cardíaco y tu presión empiezan a bajar.</td>
+                </tr>
+                <tr>
+                  <td width="86" valign="top" style="padding:0 0 18px; border-left:2px solid #4FA862;"><span style="display:inline-block; margin-left:-7px; width:12px; height:12px; border-radius:50%; background-color:#4FA862;"></span><span style="font-size:13px; font-weight:bold; color:#FFFFFF; padding-left:10px;">12 horas</span></td>
+                  <td valign="top" style="padding:0 0 18px; font-size:14px; line-height:1.5; color:#B9D8BE;">El monóxido de carbono en tu sangre vuelve a la normalidad.</td>
+                </tr>
+                <tr>
+                  <td width="86" valign="top" style="padding:0 0 18px; border-left:2px solid #2E7D32;"><span style="display:inline-block; margin-left:-7px; width:12px; height:12px; border-radius:50%; background-color:#2E7D32;"></span><span style="font-size:13px; font-weight:bold; color:#FFFFFF; padding-left:10px;">2–12 sem.</span></td>
+                  <td valign="top" style="padding:0 0 18px; font-size:14px; line-height:1.5; color:#B9D8BE;">Mejora tu circulación y respiras con más facilidad.</td>
+                </tr>
+                <tr>
+                  <td width="86" valign="top" style="padding:0; border-left:2px solid #1E4A2A;"><span style="display:inline-block; margin-left:-7px; width:12px; height:12px; border-radius:50%; background-color:#F6C453;"></span><span style="font-size:13px; font-weight:bold; color:#FFFFFF; padding-left:10px;">1 año</span></td>
+                  <td valign="top" style="padding:0; font-size:14px; line-height:1.5; color:#B9D8BE;">Tu riesgo de enfermedad coronaria se reduce a la mitad.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ========== 4. BOTÓN CTA ========== -->
+          <tr>
+            <td align="center" class="px" style="padding:36px 40px 40px; font-family:Arial, Helvetica, sans-serif;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" bgcolor="#7BD389" class="cta-btn" style="background-color:#7BD389; border-radius:999px;">
+                    <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://pulmonesverdeslanding.vercel.app/#como-funciona" style="height:52px;v-text-anchor:middle;width:260px;" arcsize="50%" fillcolor="#7BD389" stroke="f"><center style="color:#06140A;font-family:Arial;font-size:16px;font-weight:bold;">Empezar mi reto →</center></v:roundrect><![endif]-->
+                    <!--[if !mso]><!-- --><a href="https://pulmonesverdeslanding.vercel.app/#como-funciona" target="_blank" style="display:inline-block; padding:16px 38px; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#06140A; text-decoration:none; border-radius:999px;">Empezar mi reto &rarr;</a><!--<![endif]-->
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:16px 0 0; font-size:13px; color:#9FBFA5;">Calcula tu ahorro y conoce cómo funciona la app en 3 pasos.</p>
+            </td>
+          </tr>
+
+          <!-- ========== 5. FOOTER ========== -->
+          <tr>
+            <td align="center" class="px" style="background-color:#081A0E; padding:26px 40px; border-top:1px solid #1E4A2A; font-family:Arial, Helvetica, sans-serif;">
+              <p style="margin:0 0 8px; font-size:14px; font-weight:bold; color:#FFFFFF;">Respira, avanza, vive. 🌱</p>
+              <p style="margin:0 0 12px; font-size:12px; line-height:1.6; color:#6F9277;">Recibes este correo porque te suscribiste en <a href="https://pulmonesverdeslanding.vercel.app/" style="color:#7BD389; text-decoration:underline;">pulmonesverdeslanding.vercel.app</a>.<br>Pulmones Verdes es un apoyo y no reemplaza la consulta con un profesional de la salud.</p>
+              <p style="margin:0; font-size:12px; color:#6F9277;">© 2026 Pulmones Verdes · Proyecto académico · <a href="https://pulmonesverdeslanding.vercel.app/suscripcion.html" style="color:#7BD389; text-decoration:underline;">Cancelar suscripción</a></p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
