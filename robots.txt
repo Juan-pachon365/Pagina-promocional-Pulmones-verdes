@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juan-pachon365.github.io/Pagina-promocional-Pulmones-verdes/sitemap.xml

@@ -1,3 +1,12 @@
+/* Fuentes alojadas en el propio sitio (antes Google Fonts) */
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/poppins-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/poppins-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/poppins-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 800; font-display: swap; src: url('fonts/poppins-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/dm-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/dm-sans-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/dm-sans-latin-700-normal.woff2') format('woff2'); }
+
 :root {
   --verde: #2E7D32;
   --verde-oscuro: #12301B;
@@ -5,7 +14,7 @@
   --menta: #E8F5E4;
   --fondo-claro: #F4FAF2;
   --texto: #1F3326;
-  --gris: #5B7A62;
+  --gris: #4A6651;
   --sol: #F6C453;
   --fuente-titulos: 'Poppins', 'Segoe UI', sans-serif;
   --fuente-texto: 'DM Sans', 'Segoe UI', sans-serif;
@@ -206,6 +215,7 @@ h3 { font-size: 1.15rem; }
   place-items: center;
 }
 .formulario {
+  min-height: 420px;
   background: #FFFFFF;
   padding: 28px;
   border-radius: 24px;
